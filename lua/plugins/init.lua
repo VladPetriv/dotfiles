@@ -57,6 +57,7 @@ return require('packer').startup(function(use)
       require('plugins.treesitter')
     end
   }
+  use "p00f/nvim-ts-rainbow"
   --brackets
   use {
     "windwp/nvim-autopairs",
