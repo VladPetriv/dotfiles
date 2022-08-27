@@ -40,8 +40,8 @@ return require('packer').startup(function(use)
   }
   use 'saadparwaiz1/cmp_luasnip'
   use 'rafamadriz/friendly-snippets'
-  -- Github theme
-  use({ 'projekt0n/github-nvim-theme' })
+  -- gruvbox theme
+  use { "ellisonleao/gruvbox.nvim" }
   -- git
   use {
     'TimUntersberger/neogit',
@@ -57,7 +57,6 @@ return require('packer').startup(function(use)
       require('plugins.treesitter')
     end
   }
-  use "p00f/nvim-ts-rainbow"
   --brackets
   use {
     "windwp/nvim-autopairs",
@@ -65,13 +64,8 @@ return require('packer').startup(function(use)
       require("nvim-autopairs").setup()
     end
   }
-  --comment
-  use {
-    'numToStr/Comment.nvim',
-    config = function()
-      require('Comment').setup()
-    end
-  }
+  use "p00f/nvim-ts-rainbow"
+
   --statusbar
   use {
     'nvim-lualine/lualine.nvim',
@@ -94,7 +88,24 @@ return require('packer').startup(function(use)
     },
     tag = 'nightly',
     config = function()
-      require("nvim-tree").setup()
+      require("nvim-tree").setup {
+        view = {
+          width = 54,
+        },
+      }
     end
   }
+  -- Zenmode
+  use {
+    "folke/zen-mode.nvim",
+    config = function()
+      require("zen-mode").setup()
+    end
+  }
+  -- tabs
+  use {
+    'romgrk/barbar.nvim',
+    requires = { 'kyazdani42/nvim-web-devicons' }
+  }
+  use 'mfussenegger/nvim-dap'
 end)
