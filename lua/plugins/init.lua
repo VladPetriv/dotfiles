@@ -1,6 +1,7 @@
 vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
+  use 'kyazdani42/nvim-web-devicons'
   use 'wbthomason/packer.nvim'
   -- Full lua support
   use 'nvim-lua/plenary.nvim'
@@ -108,4 +109,11 @@ return require('packer').startup(function(use)
     requires = { 'kyazdani42/nvim-web-devicons' }
   }
   use 'mfussenegger/nvim-dap'
+      use {
+    "folke/todo-comments.nvim",
+    requires = "nvim-lua/plenary.nvim",
+    config = function()
+      require("todo-comments").setup()
+    end
+  }
 end)
