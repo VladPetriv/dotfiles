@@ -14,9 +14,9 @@ local on_attach = function(client, bufnr)
 
   local bufopts = { noremap = true, silent = true, buffer = bufnr }
   map('n', 'gD', vim.lsp.buf.declaration, bufopts)
-  map('n', '<Tab>', vim.lsp.buf.definition, bufopts)
-  map('n', 'K', vim.lsp.buf.hover, bufopts)
   map('n', 'gi', vim.lsp.buf.implementation, bufopts)
+  map('n', '<Tab>', vim.lsp.buf.definition, bufopts)
+  map('n', '<C-space>', vim.lsp.buf.hover, bufopts)
   map('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
   map('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, bufopts)
   map('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
@@ -31,3 +31,4 @@ local on_attach = function(client, bufnr)
 end
 
 return on_attach
+
