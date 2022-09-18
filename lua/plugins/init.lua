@@ -1,7 +1,6 @@
 vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
-  use 'kyazdani42/nvim-web-devicons'
   use 'wbthomason/packer.nvim'
   -- Full lua support
   use 'nvim-lua/plenary.nvim'
@@ -22,13 +21,20 @@ return require('packer').startup(function(use)
       require('plugins.lspconfig')
     end
   }
-  use('onsails/lspkind-nvim')
+  use 'onsails/lspkind-nvim'
   -- Go utils
   use(
     'ray-x/go.nvim',
     require('go').setup()
   )
   use 'ray-x/guihua.lua'
+  -- Errors
+  use {
+    'folke/trouble.nvim',
+    config = function()
+      require('plugins.trouble')
+    end
+  }
   -- snippets
   use {
     'L3MON4D3/LuaSnip',
@@ -41,15 +47,11 @@ return require('packer').startup(function(use)
   }
   use 'saadparwaiz1/cmp_luasnip'
   use 'rafamadriz/friendly-snippets'
-  -- gruvbox theme
-  use { "ellisonleao/gruvbox.nvim" }
+  -- Color theme
+  use 'ellisonleao/gruvbox.nvim'
+  use 'Mofiqul/vscode.nvim'
   -- git
-  use {
-    'TimUntersberger/neogit',
-    config = function()
-      require('neogit').setup()
-    end
-  }
+  use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
   --syntax
   use {
     'nvim-treesitter/nvim-treesitter',
@@ -60,22 +62,20 @@ return require('packer').startup(function(use)
   }
   --brackets
   use {
-    "windwp/nvim-autopairs",
+    'windwp/nvim-autopairs',
     config = function()
-      require("nvim-autopairs").setup()
+      require('nvim-autopairs').setup()
     end
   }
-  use "p00f/nvim-ts-rainbow"
-
+  use 'p00f/nvim-ts-rainbow'
   --statusbar
   use {
     'nvim-lualine/lualine.nvim',
-    requires = { 'kyazdani42/nvim-web-devicons', opt = true },
     config = function()
       require('plugins.lualine')
     end
   }
-  --file manager
+  --File managing
   use {
     'nvim-telescope/telescope.nvim',
     config = function()
@@ -84,36 +84,24 @@ return require('packer').startup(function(use)
   }
   use {
     'kyazdani42/nvim-tree.lua',
-    requires = {
-      'kyazdani42/nvim-web-devicons', -- optional, for file icons
-    },
     tag = 'nightly',
     config = function()
-      require("nvim-tree").setup {
-        view = {
-          width = 54,
-        },
-      }
+      require('plugins.nvim-tree')
     end
   }
-  -- Zenmode
-  use {
-    "folke/zen-mode.nvim",
-    config = function()
-      require("zen-mode").setup()
-    end
-  }
-  -- tabs
-  use {
-    'romgrk/barbar.nvim',
-    requires = { 'kyazdani42/nvim-web-devicons' }
-  }
+  -- Tabs
+  use 'romgrk/barbar.nvim'
+  -- Debug tool
   use 'mfussenegger/nvim-dap'
-      use {
-    "folke/todo-comments.nvim",
-    requires = "nvim-lua/plenary.nvim",
+  use 'rcarriga/nvim-dap-ui'
+  -- TODO comments
+  use {
+    'folke/todo-comments.nvim',
     config = function()
-      require("todo-comments").setup()
+      require('todo-comments').setup()
     end
   }
+  --  Icons
+  use 'kyazdani42/nvim-web-devicons'
+
 end)
