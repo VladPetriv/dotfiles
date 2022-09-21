@@ -50,6 +50,7 @@ return require('packer').startup(function(use)
   -- Color theme
   use 'ellisonleao/gruvbox.nvim'
   use 'Mofiqul/vscode.nvim'
+  use { 'VladPetriv/cobalt2.nvim', requires = 'tjdevries/colorbuddy.nvim' }
   -- git
   use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
   --syntax
