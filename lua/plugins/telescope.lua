@@ -8,11 +8,6 @@ require('telescope').setup {
     grep_previewer = require('telescope.previewers').vim_buffer_vimgrep.new,
     qflist_previewer = require('telescope.previewers').vim_buffer_qflist.new,
   },
-  -- pickers = {
-  --   buffers = {
-  --     initial_mode = 'normal'
-  --   }
-  -- }
 }
 
 local map = vim.api.nvim_set_keymap
