@@ -51,8 +51,15 @@ return require('packer').startup(function(use)
   use 'ellisonleao/gruvbox.nvim'
   use 'Mofiqul/vscode.nvim'
   use { 'VladPetriv/cobalt2.nvim', requires = 'tjdevries/colorbuddy.nvim' }
+  use 'https://gitlab.com/__tpb/monokai-pro.nvim'
   -- git
   use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
+  use {
+    'lewis6991/gitsigns.nvim',
+    config = function()
+      require('gitsigns').setup()
+    end
+  }
   --syntax
   use {
     'nvim-treesitter/nvim-treesitter',
@@ -104,5 +111,4 @@ return require('packer').startup(function(use)
   }
   --  Icons
   use 'kyazdani42/nvim-web-devicons'
-
 end)
