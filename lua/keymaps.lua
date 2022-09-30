@@ -6,12 +6,26 @@ function map(mode, lhs, rhs, opts)
     vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
+--Normal mode
 map('i', 'jj', '<Esc>', { silent = true })
 map('n', ',<Space>', ':nohlsearch<CR>', { silent = true })
+
+--File manager
 map('n', '<C-b>', ':NvimTreeToggle<CR>', { silent = true })
-map('n', '<C-q>', ':GoTest<CR>', { silent = true })
-map('n', '<C-Space>', ':ZenMode<CR>', { silent = true })
-map('n', '<C-g>', ':Neogit<CR>', { silent = true })
+
+--Git
+map('n', '<C-g>', ':DiffviewOpen<CR>', { silent = true })
+map('n', '<C-k>', ':DiffviewClose<CR>', { silent = true })
+-- Tabs
 map('n', 'gT', '<Cmd>BufferPrevious<CR>', opts)
 map('n', 'gt', '<Cmd>BufferNext<CR>', opts)
 map('n', 'wn', '<Cmd>BufferClose<CR>', opts)
+
+-- Trouble
+map('n', '<C-p>', ':TroubleToggle<CR>', opts)
+
+-- Golang
+map('n','<Leader>ff',':GoTestFile<CR>',opts)
+map('n','<Leader>a',':GoTest<CR>',opts)
+map('n','<Leader>p',':GoTestPkg<CR>',opts)
+map('n','<Leader>l',':GoLint<CR>',opts)
