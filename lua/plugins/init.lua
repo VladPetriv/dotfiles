@@ -117,4 +117,15 @@ return require('packer').startup(function(use)
   }
   --  Icons
   use 'kyazdani42/nvim-web-devicons'
+  -- Terminal
+  use {
+    "akinsho/toggleterm.nvim",
+    tag = '*',
+    config = function()
+      require("toggleterm").setup{
+        direction = 'float',
+        open_mapping = '<C-o>',
+      }
+    end
+  }
 end)
