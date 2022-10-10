@@ -28,6 +28,12 @@ return require('packer').startup(function(use)
     require('go').setup()
   )
   use 'ray-x/guihua.lua'
+  use {
+    "klen/nvim-test",
+    config = function()
+      require('nvim-test').setup()
+    end
+  }
   -- Errors
   use {
     'folke/trouble.nvim',
