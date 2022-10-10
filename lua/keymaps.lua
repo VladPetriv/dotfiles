@@ -25,7 +25,7 @@ map('n', 'wn', '<Cmd>BufferClose<CR>', opts)
 map('n', '<C-p>', ':TroubleToggle<CR>', opts)
 
 -- Golang
-map('n','<Leader>ff',':GoTestFile<CR>',opts)
-map('n','<Leader>a',':GoTest<CR>',opts)
+map('n','<Leader>ff',':TestFile<CR>',opts)
+map('n','<Leader>a',':TestSuite<CR>',opts)
 map('n','<Leader>p',':GoTestPkg<CR>',opts)
 map('n','<Leader>l',':GoLint<CR>',opts)
