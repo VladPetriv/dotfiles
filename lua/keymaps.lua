@@ -26,6 +26,7 @@ map('n', '<C-p>', ':TroubleToggle<CR>', opts)
 
 -- Golang
 map('n','<Leader>ff',':GoTestFile<CR>',opts)
+map('n','<Leader>r',':GoTestFunc<CR>',opts)
 map('n','<Leader>a',':GoTest<CR>',opts)
 map('n','<Leader>p',':GoTestPkg<CR>',opts)
 map('n','<Leader>l',':GoLint<CR>',opts)
