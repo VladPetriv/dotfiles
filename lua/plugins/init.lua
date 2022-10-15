@@ -109,6 +109,12 @@ return require('packer').startup(function(use)
       require('todo-comments').setup()
     end
   }
+  use {
+    'numToStr/Comment.nvim',
+    config = function()
+        require('Comment').setup()
+    end
+  }
   --  Icons
   use 'kyazdani42/nvim-web-devicons'
   -- Terminal
