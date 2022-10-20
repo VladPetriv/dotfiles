@@ -7,7 +7,6 @@ local function config(_config)
   }, _config or {})
 end
 
--- https://github.com/golang/tools/blob/master/gopls/doc/vim.md#neovim-install
 lspconfig.gopls.setup(config({
   on_attach = require('plugins.lsp'),
   cmd = { 'gopls', 'serve' },

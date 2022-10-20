@@ -4,6 +4,7 @@ return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
   -- Full lua support
   use 'nvim-lua/plenary.nvim'
+
   -- Autocomplete
   use {
     'hrsh7th/nvim-cmp',
@@ -14,28 +15,13 @@ return require('packer').startup(function(use)
   use 'hrsh7th/cmp-nvim-lsp'
   use 'hrsh7th/cmp-buffer'
   use 'hrsh7th/cmp-path'
-  -- LSF
   use {
-    'neovim/nvim-lspconfig',
-    config = function()
-      require('plugins.lspconfig')
-    end
+    'tzachar/cmp-tabnine', 
+    run='./install.sh',
+    requires = 'hrsh7th/nvim-cmp'
   }
-  use 'onsails/lspkind-nvim'
-  -- Go utils
-  use(
-    'ray-x/go.nvim',
-    require('go').setup()
-  )
-  use 'ray-x/guihua.lua'
-  -- Errors
-  use {
-    'folke/trouble.nvim',
-    config = function()
-      require('plugins.trouble')
-    end
-  }
-  -- snippets
+
+  -- Snippets
   use {
     'L3MON4D3/LuaSnip',
     after = 'friendly-snippets',
@@ -47,20 +33,52 @@ return require('packer').startup(function(use)
   }
   use 'saadparwaiz1/cmp_luasnip'
   use 'rafamadriz/friendly-snippets'
-  -- Color theme
+
+  -- LSP
+  use {
+    'neovim/nvim-lspconfig',
+    config = function()
+      require('plugins.lspconfig')
+    end
+  }
+  use 'williamboman/nvim-lsp-installer'
+  use "ray-x/lsp_signature.nvim"
+
+  -- Go tools
+  use(
+    'ray-x/go.nvim',
+    require('go').setup{
+      run_in_floaterm = true
+    }
+  )
+  use 'ray-x/guihua.lua'
+
+  -- Errors
+  use {
+    'folke/trouble.nvim',
+    config = function()
+      require('plugins.trouble')
+    end
+  }
+
+ 
+  -- Color themes
   use 'ellisonleao/gruvbox.nvim'
-  use 'Mofiqul/vscode.nvim'
-  use { 'VladPetriv/cobalt2.nvim', requires = 'tjdevries/colorbuddy.nvim' }
-  use 'https://gitlab.com/__tpb/monokai-pro.nvim'
-  -- git
-  use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
+
+  --Git
+  use { 
+    'sindrets/diffview.nvim', 
+    requires = 'nvim-lua/plenary.nvim' 
+  }
+  use 'tveskag/nvim-blame-line'
   use {
     'lewis6991/gitsigns.nvim',
     config = function()
       require('gitsigns').setup()
     end
   }
-  --syntax
+
+  --Syntax highlight
   use {
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate',
@@ -68,7 +86,8 @@ return require('packer').startup(function(use)
       require('plugins.treesitter')
     end
   }
-  --brackets
+
+  --Brackets
   use {
     'windwp/nvim-autopairs',
     config = function()
@@ -76,13 +95,15 @@ return require('packer').startup(function(use)
     end
   }
   use 'p00f/nvim-ts-rainbow'
-  --statusbar
+
+  --Status bar
   use {
     'nvim-lualine/lualine.nvim',
     config = function()
       require('plugins.lualine')
     end
   }
+
   --File managing
   use {
     'nvim-telescope/telescope.nvim',
@@ -97,12 +118,12 @@ return require('packer').startup(function(use)
       require('plugins.nvim-tree')
     end
   }
-  -- Tabs
-  use 'romgrk/barbar.nvim'
-  -- Debug tool
+
+  --Debug 
   use 'mfussenegger/nvim-dap'
   use 'rcarriga/nvim-dap-ui'
-  -- TODO comments
+
+  --Comments
   use {
     'folke/todo-comments.nvim',
     config = function()
@@ -115,17 +136,8 @@ return require('packer').startup(function(use)
         require('Comment').setup()
     end
   }
-  --  Icons
+
+  --Icons
   use 'kyazdani42/nvim-web-devicons'
-  -- Terminal
-  use {
-    "akinsho/toggleterm.nvim",
-    tag = '*',
-    config = function()
-      require("toggleterm").setup{
-        direction = 'float',
-        open_mapping = '<C-o>',
-      }
-    end
-  }
+  use('onsails/lspkind-nvim')
 end)

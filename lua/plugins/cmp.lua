@@ -2,9 +2,9 @@ local cmp = require('cmp')
 local lspkind = require('lspkind')
 
 local source_mapping = {
-  buffer = '[Buffer]',
   nvim_lsp = '[LSP]',
   nvim_lua = '[Lua]',
+  cmp_tabnine = '[TN]',
   path = '[Path]',
 }
 
@@ -22,7 +22,10 @@ cmp.setup({
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
-  }, {
-    { name = 'buffer' },
-  }),
+    { name = 'cmp_tabnine' }
+  })
+})
+
+require('lsp_signature').setup({
+  hint_prefix = '',
 })

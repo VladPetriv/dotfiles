@@ -3,9 +3,7 @@ local o = vim.opt
 local cmd = vim.cmd
 local exec = vim.api.nvim_exec
 
-g.mapleader = ' '
 o.cursorline = true
---o.termguicolors = true
 o.clipboard = 'unnamedplus'
 o.nu = true
 o.hidden = true
@@ -21,7 +19,6 @@ o.hidden = true
 o.swapfile = false
 o.backup = false
 o.undofile = true
---o.hlsearch = false
 o.incsearch = true
 o.scrolloff = 8
 o.signcolumn = 'yes'
@@ -29,10 +26,9 @@ o.cmdheight = 1
 o.updatetime = 50
 o.showmode = false
 vim.g.mapleader = ";"
---vim.o.background = 'light'
 
 -- Gruvbox theme setup
---[[
+--vim.o.background = 'light'
 require("gruvbox").setup({
   undercurl = true,
   underline = true,
@@ -48,15 +44,3 @@ require("gruvbox").setup({
   overrides = {},
 })
 cmd("colorscheme gruvbox")
-]]--
-
--- Set cobalt2 as theme
---require('colorbuddy').colorscheme('cobalt2')
-
--- Set up monokai pro theme
---vim.g.monokaipro_filter = "octogon"
---vim.g.monokaipro_italic_keywords = false
-
---cmd("colorscheme monokaipro")
-
-cmd("colorscheme vscode")
