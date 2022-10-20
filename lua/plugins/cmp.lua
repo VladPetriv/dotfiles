@@ -25,7 +25,3 @@ cmp.setup({
     { name = 'cmp_tabnine' }
   })
 })
-
-require('lsp_signature').setup({
-  hint_prefix = '',
-})

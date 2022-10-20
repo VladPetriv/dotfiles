@@ -42,7 +42,6 @@ return require('packer').startup(function(use)
     end
   }
   use 'williamboman/nvim-lsp-installer'
-  use "ray-x/lsp_signature.nvim"
 
   -- Go tools
   use(
