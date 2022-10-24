@@ -27,3 +27,6 @@ map('n','<Leader>r',':GoTestFunc<CR>',opts)
 map('n','<Leader>a',':GoTest<CR>',opts)
 map('n','<Leader>p',':GoTestPkg<CR>',opts)
 map('n','<Leader>d',':GoDebug<CR>',opts)
+
+--Zen mode
+map('n','<Leader><Space>',':ZenMode<CR>',opts)

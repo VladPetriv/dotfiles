@@ -44,12 +44,12 @@ return require('packer').startup(function(use)
   use 'williamboman/nvim-lsp-installer'
 
   -- Go tools
-  use(
+  use{
     'ray-x/go.nvim',
     require('go').setup{
       run_in_floaterm = true
     }
-  )
+  }
   use 'ray-x/guihua.lua'
 
   -- Errors
@@ -60,7 +60,6 @@ return require('packer').startup(function(use)
     end
   }
 
- 
   -- Color themes
   use 'ellisonleao/gruvbox.nvim'
 
@@ -136,6 +135,14 @@ return require('packer').startup(function(use)
     end
   }
 
+  -- Zen mode
+  use {
+    "folke/zen-mode.nvim",
+    config = function()
+      require("zen-mode").setup()
+    end
+  }
+  
   --Icons
   use 'kyazdani42/nvim-web-devicons'
   use('onsails/lspkind-nvim')
