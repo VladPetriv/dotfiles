@@ -1,13 +1,6 @@
 local cmp = require('cmp')
 local lspkind = require('lspkind')
 
-local source_mapping = {
-  nvim_lsp = '[LSP]',
-  nvim_lua = '[Lua]',
-  cmp_tabnine = '[TN]',
-  path = '[Path]',
-}
-
 cmp.setup({
   snippet = {
     expand = function(args)
@@ -22,6 +15,20 @@ cmp.setup({
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
+    { name = 'path' },
+    { name = 'buffer' },
     { name = 'cmp_tabnine' }
-  })
+  }),
+  formatting = {
+    format = lspkind.cmp_format({
+      mode = "symbol_text",
+      menu = ({
+        nvim_lsp = "[LSP]",
+        luasnip = "[Snip]",
+        path = "[Path]",
+        buffer = "[Buffer]",
+        cmp_tabnine = "[TabNine]"
+      }),
+    }),
+  },
 })

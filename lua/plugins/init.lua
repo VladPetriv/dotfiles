@@ -41,7 +41,6 @@ return require('packer').startup(function(use)
       require('plugins.lspconfig')
     end
   }
-  use 'williamboman/nvim-lsp-installer'
 
   -- Go tools
   use{
@@ -52,14 +51,6 @@ return require('packer').startup(function(use)
   }
   use 'ray-x/guihua.lua'
 
-  -- Errors
-  use {
-    'folke/trouble.nvim',
-    config = function()
-      require('plugins.trouble')
-    end
-  }
-
   -- Color themes
   use 'ellisonleao/gruvbox.nvim'
 
@@ -68,7 +59,6 @@ return require('packer').startup(function(use)
     'sindrets/diffview.nvim', 
     requires = 'nvim-lua/plenary.nvim' 
   }
-  use 'tveskag/nvim-blame-line'
   use {
     'lewis6991/gitsigns.nvim',
     config = function()

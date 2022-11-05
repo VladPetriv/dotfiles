@@ -31,7 +31,7 @@ vim.g.mapleader = ";"
 --vim.o.background = 'light'
 require("gruvbox").setup({
   undercurl = true,
-  underline = true,
+  underline = false,
   bold = true,
   italic = false,
   strikethrough = true,

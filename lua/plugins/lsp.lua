@@ -2,12 +2,12 @@ local map = vim.keymap.set
 local hi = vim.highlight.create
 local opts = { noremap = true, silent = true }
 
-vim.diagnostic.config({ signs = false })
+vim.diagnostic.config({ signs = true })
 
-map('n', '<leader>e', vim.diagnostic.open_float, opts)
-map('n', '[d', vim.diagnostic.goto_prev, opts)
-map('n', ']d', vim.diagnostic.goto_next, opts)
-map('n', '<leader>q', vim.diagnostic.setloclist, opts)
+map('n', 'go', vim.diagnostic.open_float, opts)
+map('n', 'gD', vim.diagnostic.goto_prev, opts)
+map('n', 'gd', vim.diagnostic.goto_next, opts)
+map('n', '<Leader>q', vim.diagnostic.setloclist, opts)
 
 local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
@@ -17,16 +17,7 @@ local on_attach = function(client, bufnr)
   map('n', 'gi', vim.lsp.buf.implementation, bufopts)
   map('n', '<Tab>', vim.lsp.buf.definition, bufopts)
   map('n', '<C-space>', vim.lsp.buf.hover, bufopts)
-  map('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
-  map('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, bufopts)
-  map('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
-  map('n', '<leader>wl', function()
-    print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-  end, bufopts)
-  map('n', '<leader>D', vim.lsp.buf.type_definition, bufopts)
-  map('n', '<leader>rn', vim.lsp.buf.rename, bufopts)
-  map('n', '<leader>ca', vim.lsp.buf.code_action, bufopts)
-  map('n', 'gr', vim.lsp.buf.references, bufopts)
+  map('n', 'gr', vim.lsp.buf.references, bufopts) 
 end
 
 return on_attach
