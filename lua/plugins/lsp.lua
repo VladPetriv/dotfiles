@@ -5,8 +5,8 @@ local opts = { noremap = true, silent = true }
 vim.diagnostic.config({ signs = true })
 
 map('n', 'go', vim.diagnostic.open_float, opts)
-map('n', 'gD', vim.diagnostic.goto_prev, opts)
-map('n', 'gd', vim.diagnostic.goto_next, opts)
+map('n', 'gT', vim.diagnostic.goto_prev, opts)
+map('n', 'gt', vim.diagnostic.goto_next, opts)
 map('n', '<Leader>q', vim.diagnostic.setloclist, opts)
 
 local on_attach = function(client, bufnr)
