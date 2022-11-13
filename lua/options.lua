@@ -25,22 +25,10 @@ o.signcolumn = 'yes'
 o.cmdheight = 1
 o.updatetime = 50
 o.showmode = false
+o.termguicolors = true
 vim.g.mapleader = ";"
 
--- Gruvbox theme setup
---vim.o.background = 'light'
-require("gruvbox").setup({
-  undercurl = true,
-  underline = false,
-  bold = true,
-  italic = false,
-  strikethrough = true,
-  invert_selection = false,
-  invert_signs = false,
-  invert_tabline = false,
-  invert_intend_guides = false,
-  inverse = true, -- invert background for search, diffs, statuslines and errors
-  contrast = "", -- can be "hard", "soft" or empty string
-  overrides = {},
-})
-cmd("colorscheme gruvbox")
+require('onedark').setup {
+    style = 'deep'
+}
+require('onedark').load()

@@ -42,17 +42,17 @@ return require('packer').startup(function(use)
     end
   }
 
-  -- Go tools
+  -- Golang
   use{
     'ray-x/go.nvim',
-    require('go').setup{
-      run_in_floaterm = true
-    }
+    config = function()
+      require('plugins.go')
+    end
   }
   use 'ray-x/guihua.lua'
 
   -- Color themes
-  use 'ellisonleao/gruvbox.nvim'
+  use 'navarasu/onedark.nvim'
 
   --Git
   use { 
@@ -62,15 +62,7 @@ return require('packer').startup(function(use)
   use {
     'lewis6991/gitsigns.nvim',
     config = function()
-      require('gitsigns').setup{
-        current_line_blame = true, 
-        current_line_blame_opts = {
-          virt_text = true,
-          virt_text_pos = 'eol', 
-          delay = 500,
-          ignore_whitespace = false,
-        },
-      }
+      require('plugins.gitsigns') 
     end
   }
 
