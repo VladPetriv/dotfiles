@@ -52,7 +52,7 @@ return require('packer').startup(function(use)
   use 'ray-x/guihua.lua'
 
   -- Color themes
-  use 'navarasu/onedark.nvim'
+  use 'ellisonleao/gruvbox.nvim' 
 
   --Git
   use { 
@@ -69,7 +69,6 @@ return require('packer').startup(function(use)
   --Syntax highlight
   use {
     'nvim-treesitter/nvim-treesitter',
-    run = ':TSUpdate',
     config = function()
       require('plugins.treesitter')
     end
