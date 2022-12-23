@@ -21,6 +21,9 @@ return require('packer').startup(function(use)
     requires = 'hrsh7th/nvim-cmp'
   }
 
+  -- Tabs
+  use 'romgrk/barbar.nvim'
+
   -- Snippets
   use {
     'L3MON4D3/LuaSnip',
@@ -53,6 +56,7 @@ return require('packer').startup(function(use)
 
   -- Color themes
   use 'ellisonleao/gruvbox.nvim' 
+  use 'bluz71/vim-nightfly-colors'
 
   --Git
   use { 
@@ -135,4 +139,5 @@ return require('packer').startup(function(use)
   --Icons
   use 'kyazdani42/nvim-web-devicons'
   use('onsails/lspkind-nvim')
+
 end)

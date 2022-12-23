@@ -6,6 +6,7 @@ local exec = vim.api.nvim_exec
 o.cursorline = true
 o.clipboard = 'unnamedplus'
 o.nu = true
+o.relativenumber = true
 o.hidden = true
 o.errorbells = false
 o.mouse = 'a'
@@ -27,7 +28,7 @@ o.updatetime = 50
 o.showmode = false
 o.termguicolors = true
 vim.g.mapleader = ";"
-
+--[[ 
 require("gruvbox").setup({
   undercurl = true,
   underline = true,
@@ -42,5 +43,6 @@ require("gruvbox").setup({
   dim_inactive = false,
   transparent_mode = false,
 })
+ ]]
 
-cmd("colorscheme gruvbox")
+cmd("colorscheme nightfly")
