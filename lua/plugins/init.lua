@@ -24,6 +24,9 @@ return require('packer').startup(function(use)
   -- Tabs
   use 'romgrk/barbar.nvim'
 
+  -- Spell checker
+  use 'kamykn/spelunker.vim'
+
   -- Snippets
   use {
     'L3MON4D3/LuaSnip',

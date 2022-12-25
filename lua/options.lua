@@ -27,22 +27,6 @@ o.cmdheight = 1
 o.updatetime = 50
 o.showmode = false
 o.termguicolors = true
-vim.g.mapleader = ";"
---[[ 
-require("gruvbox").setup({
-  undercurl = true,
-  underline = true,
-  bold = true,
-  italic = false,
-  strikethrough = true,
-  invert_selection = false,
-  invert_signs = false,
-  invert_tabline = false,
-  invert_intend_guides = false,
-  inverse = true, -- invert background for search, diffs, statuslines and errors
-  dim_inactive = false,
-  transparent_mode = false,
-})
- ]]
+g.mapleader = ";"
 
 cmd("colorscheme nightfly")
