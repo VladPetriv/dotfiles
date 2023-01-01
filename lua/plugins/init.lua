@@ -27,6 +27,9 @@ return require('packer').startup(function(use)
   -- Spell checker
   use 'kamykn/spelunker.vim'
 
+  -- Markdown preview
+  use 'iamcco/markdown-preview.nvim'
+
   -- Snippets
   use {
     'L3MON4D3/LuaSnip',
