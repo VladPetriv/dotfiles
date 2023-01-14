@@ -141,6 +141,15 @@ return require('packer').startup(function(use)
       require("zen-mode").setup()
     end
   }
+
+  -- Errors
+  use {
+    "folke/trouble.nvim",
+    requires = "kyazdani42/nvim-web-devicons",
+    config = function()
+      require('plugins.trouble')
+    end
+  }
   
   --Icons
   use 'kyazdani42/nvim-web-devicons'

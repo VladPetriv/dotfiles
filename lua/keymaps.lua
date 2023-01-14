@@ -32,3 +32,6 @@ map('n','<Leader><Space>',':ZenMode<CR>',opts)
 map('n', 'gT', '<Cmd>BufferPrevious<CR>', opts)
 map('n', 'gt', '<Cmd>BufferNext<CR>', opts)
 map('n', 'wn', '<Cmd>BufferClose<CR>', opts)
+
+-- Trouble
+map('n','<C-p>',':TroubleToggle<CR>',opts)
