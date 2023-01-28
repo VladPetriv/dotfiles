@@ -29,4 +29,4 @@ o.showmode = false
 o.termguicolors = true
 g.mapleader = ";"
 
-cmd("colorscheme nightfly")
+
