@@ -16,7 +16,7 @@ local on_attach = function(client, bufnr)
   map('n', 'gD', vim.lsp.buf.declaration, bufopts)
   map('n', 'gi', vim.lsp.buf.implementation, bufopts)
   map('n', '<Tab>', vim.lsp.buf.definition, bufopts)
-  map('n', '<C-space>', vim.lsp.buf.hover, bufopts)
+  map('n', '<Leader><Space>', vim.lsp.buf.hover, bufopts)
   map('n', 'gr', vim.lsp.buf.references, bufopts) 
 end
 
