@@ -17,7 +17,6 @@ cmp.setup({
     { name = 'luasnip' },
     { name = 'path' },
     { name = 'buffer' },
-    { name = 'cmp_tabnine' }
   }),
   formatting = {
     format = lspkind.cmp_format({
@@ -27,7 +26,6 @@ cmp.setup({
         luasnip = "[Snip]",
         path = "[Path]",
         buffer = "[Buffer]",
-        cmp_tabnine = "[TabNine]"
       }),
     }),
   },
