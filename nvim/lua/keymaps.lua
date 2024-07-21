@@ -25,9 +25,6 @@ map('n','<Leader>a',':GoTest<CR>',opts)
 map('n','<Leader>p',':GoTestPkg<CR>',opts)
 map('n','<Leader>d',':GoDebug<CR>',opts)
 
---Zen mode
-map('n','<Leader><Space>',':ZenMode<CR>',opts)
-
 -- Tabs 
 map('n', 'gT', '<Cmd>BufferPrevious<CR>', opts)
 map('n', 'gt', '<Cmd>BufferNext<CR>', opts)

@@ -28,5 +28,7 @@ o.updatetime = 50
 o.showmode = false
 o.termguicolors = true
 g.mapleader = ";"
+o.spelllang='en_us'
+o.spell=true
 
-
+cmd("colorscheme rose-pine-moon")

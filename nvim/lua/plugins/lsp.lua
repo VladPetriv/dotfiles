@@ -5,8 +5,8 @@ local opts = { noremap = true, silent = true }
 vim.diagnostic.config({ signs = true })
 
 map('n', 'go', vim.diagnostic.open_float, opts)
---map('n', 'gT', vim.diagnostic.goto_prev, opts)
-------------------map('n', 'gt', vim.diagnostic.goto_next, opts)
+map('n', ']d', vim.diagnostic.goto_prev, opts)
+map('n', '[d', vim.diagnostic.goto_next, opts)
 map('n', '<Leader>q', vim.diagnostic.setloclist, opts)
 
 local on_attach = function(client, bufnr)
@@ -15,7 +15,7 @@ local on_attach = function(client, bufnr)
   local bufopts = { noremap = true, silent = true, buffer = bufnr }
   map('n', 'gD', vim.lsp.buf.declaration, bufopts)
   map('n', 'gi', vim.lsp.buf.implementation, bufopts)
-  map('n', '<Tab>', vim.lsp.buf.definition, bufopts)
+  map('n', 'gd', vim.lsp.buf.definition, bufopts)
   map('n', '<Leader><Space>', vim.lsp.buf.hover, bufopts)
   map('n', 'gr', vim.lsp.buf.references, bufopts) 
 end

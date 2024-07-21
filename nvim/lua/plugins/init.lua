@@ -19,9 +19,6 @@ return require('packer').startup(function(use)
   -- Tabs
   use 'romgrk/barbar.nvim'
 
-  -- Spell checker
-  use 'kamykn/spelunker.vim'
-
   -- Markdown preview
   use 'iamcco/markdown-preview.nvim'
 
@@ -56,9 +53,8 @@ return require('packer').startup(function(use)
   use 'ray-x/guihua.lua'
 
   -- Color themes
-  use 'ellisonleao/gruvbox.nvim' 
-  use 'bluz71/vim-nightfly-colors'
-
+  use 'rose-pine/neovim'
+  
   --Git
   use { 
     'sindrets/diffview.nvim', 
@@ -104,8 +100,7 @@ return require('packer').startup(function(use)
     end
   }
   use {
-    'kyazdani42/nvim-tree.lua',
-    tag = 'nightly',
+    'nvim-tree/nvim-tree.lua',
     config = function()
       require('plugins.nvim-tree')
     end
@@ -129,14 +124,6 @@ return require('packer').startup(function(use)
     end
   }
 
-  -- Zen mode
-  use {
-    "folke/zen-mode.nvim",
-    config = function()
-      require("zen-mode").setup()
-    end
-  }
-
   -- Errors
   use {
     "folke/trouble.nvim",
@@ -148,6 +135,5 @@ return require('packer').startup(function(use)
   
   --Icons
   use 'kyazdani42/nvim-web-devicons'
-  use('onsails/lspkind-nvim')
-
+  use 'onsails/lspkind-nvim'
 end)
