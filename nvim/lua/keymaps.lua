@@ -11,24 +11,27 @@ map('i', 'jj', '<Esc>', { silent = true })
 map('n', ',<Space>', ':nohlsearch<CR>', { silent = true })
 
 --File manager
-map('n', '<C-b>', ':NvimTreeToggle<CR>', { silent = true })
+map('n', '<C-b>', ':Neotree toggle<CR>', { silent = true })
 
 --Git
 map('n', '<C-g>', ':DiffviewOpen<CR>', { silent = true })
 map('n', '<C-k>', ':DiffviewClose<CR>', { silent = true })
-map('n', '<Leader>g',':ToggleBlameLine<CR>', { silent = true })
+map('n', '<Leader>g', ':ToggleBlameLine<CR>', { silent = true })
 
 -- Golang
-map('n','<Leader>f',':GoTestFile<CR>',opts)
-map('n','<Leader>r',':GoTestFunc<CR>',opts)
-map('n','<Leader>a',':GoTest<CR>',opts)
-map('n','<Leader>p',':GoTestPkg<CR>',opts)
-map('n','<Leader>d',':GoDebug<CR>',opts)
+map('n', '<Leader>f', ':GoTestFile<CR>')
+map('n', '<Leader>r', ':GoTestFunc<CR>')
+map('n', '<Leader>a', ':GoTest<CR>')
+map('n', '<Leader>p', ':GoTestPkg<CR>')
+map('n', '<Leader>d', ':GoDebug<CR>')
 
--- Tabs 
-map('n', 'gT', '<Cmd>BufferPrevious<CR>', opts)
-map('n', 'gt', '<Cmd>BufferNext<CR>', opts)
-map('n', 'wn', '<Cmd>BufferClose<CR>', opts)
+-- Tabs
+map('n', 'gT', '<Cmd>BufferPrevious<CR>')
+map('n', 'gt', '<Cmd>BufferNext<CR>')
+map('n', 'wn', '<Cmd>BufferClose<CR>')
 
 -- Trouble
-map('n','<C-p>',':TroubleToggle<CR>',opts)
+map('n', '<C-p>', ':TroubleToggle<CR>')
+
+-- NodeJS
+map('n', '<Leader>s', ':Neoformat<CR>')

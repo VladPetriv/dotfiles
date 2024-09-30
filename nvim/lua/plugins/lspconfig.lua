@@ -24,6 +24,17 @@ lspconfig.gopls.setup(config({
   }
 }))
 
+lspconfig.tsserver.setup{
+  on_attach = require('plugins.lsp'),
+  flags = configs.lsp_flags,
+  settings = {
+    completions = {
+      completeFunctionCalls = true,
+      dissableSuggestions = true,
+    }
+  }
+}
+
 local signs = { Error = " ", Warn = " ", Hint = " ", Info = "" } 
 for type, icon in pairs(signs) do
     local hl = "DiagnosticSign" .. type
