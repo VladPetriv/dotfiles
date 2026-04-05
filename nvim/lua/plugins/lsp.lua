@@ -27,6 +27,15 @@ return {
             vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, gopts)
             vim.keymap.set('n', '<Leader>q', vim.diagnostic.setloclist, gopts)
 
+            -- protobuf (buf)
+            vim.lsp.config.buf_ls = {
+                cmd = { 'buf', 'beta', 'lsp' },
+                filetypes = { 'proto' },
+                root_markers = { 'buf.yaml', 'buf.gen.yaml', '.git' },
+                capabilities = capabilities,
+            }
+            vim.lsp.enable('buf_ls')
+
             vim.lsp.config.gopls = {
                 cmd = { 'gopls', 'serve' },
                 filetypes = { 'go', 'gomod', 'gowork', 'gotmpl' },
