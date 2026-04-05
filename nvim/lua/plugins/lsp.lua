@@ -1,24 +1,76 @@
-local map = vim.keymap.set
-local hi = vim.highlight.create
-local opts = { noremap = true, silent = true }
+return {
+    {
+        'neovim/nvim-lspconfig',
+        event = { 'BufReadPre', 'BufNewFile' },
+        dependencies = {
+            'hrsh7th/cmp-nvim-lsp',
+        },
+        config = function()
+            local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-vim.diagnostic.config({ signs = true })
+            vim.api.nvim_create_autocmd('LspAttach', {
+                callback = function(args)
+                    local opts = { noremap = true, silent = true, buffer = args.buf }
+                    local map = vim.keymap.set
+                    map('n', 'gD', vim.lsp.buf.declaration, opts)
+                    map('n', 'gi', vim.lsp.buf.implementation, opts)
+                    map('n', 'gd', vim.lsp.buf.definition, opts)
+                    map('n', '<Leader><Space>', vim.lsp.buf.hover, opts)
+                    map('n', 'gr', vim.lsp.buf.references, opts)
+                end,
+            })
 
-map('n', 'go', vim.diagnostic.open_float, opts)
-map('n', ']d', vim.diagnostic.goto_prev, opts)
-map('n', '[d', vim.diagnostic.goto_next, opts)
-map('n', '<Leader>q', vim.diagnostic.setloclist, opts)
+            vim.diagnostic.config({ signs = true })
+            local gopts = { noremap = true, silent = true }
+            vim.keymap.set('n', 'go', vim.diagnostic.open_float, gopts)
+            vim.keymap.set('n', ']d', vim.diagnostic.goto_next, gopts)
+            vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, gopts)
+            vim.keymap.set('n', '<Leader>q', vim.diagnostic.setloclist, gopts)
 
-local on_attach = function(client, bufnr)
-  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+            vim.lsp.config.gopls = {
+                cmd = { 'gopls', 'serve' },
+                filetypes = { 'go', 'gomod', 'gowork', 'gotmpl' },
+                root_markers = { 'go.work', 'go.mod', '.git' },
+                capabilities = capabilities,
+                settings = {
+                    gopls = {
+                        semanticTokens = true,
+                        analyses = {
+                            unusedparams = true,
+                            shadow = true,
+                            nilness = true,
+                            unusedwrite = true,
+                            useany = true,
+                        },
+                        staticcheck = true,
+                        gofumpt = true,
+                        -- hints = {
+                        --     assignVariableTypes = true,
+                        --     compositeLiteralFields = true,
+                        --     compositeLiteralTypes = true,
+                        --     constantValues = true,
+                        --     functionTypeParameters = true,
+                        --     parameterNames = true,
+                        --     rangeVariableTypes = true,
+                        -- },
+                    },
+                },
+            }
+            vim.lsp.enable('gopls')
 
-  local bufopts = { noremap = true, silent = true, buffer = bufnr }
-  map('n', 'gD', vim.lsp.buf.declaration, bufopts)
-  map('n', 'gi', vim.lsp.buf.implementation, bufopts)
-  map('n', 'gd', vim.lsp.buf.definition, bufopts)
-  map('n', '<Leader><Space>', vim.lsp.buf.hover, bufopts)
-  map('n', 'gr', vim.lsp.buf.references, bufopts) 
-end
+            vim.lsp.config.ts_ls = {
+                cmd = { 'typescript-language-server', '--stdio' },
+                filetypes = { 'typescript', 'typescriptreact', 'javascript', 'javascriptreact' },
+                root_markers = { 'tsconfig.json', 'package.json', '.git' },
+                capabilities = capabilities,
+            }
+            vim.lsp.enable('ts_ls')
 
-return on_attach
-
+            local signs = { Error = " ", Warn = " ", Hint = " ", Info = "" }
+            for type, icon in pairs(signs) do
+                local hl = "DiagnosticSign" .. type
+                vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+            end
+        end,
+    },
+}

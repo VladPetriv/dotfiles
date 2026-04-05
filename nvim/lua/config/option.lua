@@ -1,7 +1,5 @@
 local g = vim.g
 local o = vim.opt
-local cmd = vim.cmd
-local exec = vim.api.nvim_exec
 
 o.cursorline = true
 o.clipboard = 'unnamedplus'
@@ -16,7 +14,6 @@ o.shiftwidth = 2
 o.expandtab = true
 o.smartindent = true
 o.wrap = false
-o.hidden = true
 o.swapfile = false
 o.backup = false
 o.undofile = true
@@ -28,7 +25,11 @@ o.updatetime = 50
 o.showmode = false
 o.termguicolors = true
 g.mapleader = ";"
-o.spelllang='en_us'
-o.spell=true
+o.spelllang = 'en_us'
+o.spell = true
 
-cmd("colorscheme rose-pine-moon")
+-- Disable unused providers
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_ruby_provider = 0
+vim.g.loaded_python3_provider = 0
+vim.g.loaded_node_provider = 0

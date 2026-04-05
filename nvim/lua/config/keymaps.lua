@@ -1,22 +1,20 @@
-function map(mode, lhs, rhs, opts)
+local function map(mode, lhs, rhs, opts)
     local options = { noremap = true }
     if opts then
         options = vim.tbl_extend("force", options, opts)
     end
-    vim.api.nvim_set_keymap(mode, lhs, rhs, options)
+    vim.keymap.set(mode, lhs, rhs, options)
 end
 
---Normal mode
 map('i', 'jj', '<Esc>', { silent = true })
 map('n', ',<Space>', ':nohlsearch<CR>', { silent = true })
 
---File manager
-map('n', '<C-b>', ':Neotree toggle<CR>', { silent = true })
-
---Git
+-- Git
 map('n', '<C-g>', ':DiffviewOpen<CR>', { silent = true })
 map('n', '<C-k>', ':DiffviewClose<CR>', { silent = true })
-map('n', '<Leader>g', ':ToggleBlameLine<CR>', { silent = true })
+map('n', '<Leader>g', ':Gitsigns toggle_current_line_blame<CR>', { silent = true })
+map('n', "<C-'>", ':Gitsigns preview_hunk<CR>', { silent = true })
+map('n', "<C-;>", ':Gitsigns reset_hunk<CR>', { silent = true })
 
 -- Golang
 map('n', '<Leader>f', ':GoTestFile<CR>')
@@ -29,9 +27,6 @@ map('n', '<Leader>d', ':GoDebug<CR>')
 map('n', 'gT', '<Cmd>BufferPrevious<CR>')
 map('n', 'gt', '<Cmd>BufferNext<CR>')
 map('n', 'wn', '<Cmd>BufferClose<CR>')
-
--- Trouble
-map('n', '<C-p>', ':TroubleToggle<CR>')
 
 -- NodeJS
 map('n', '<Leader>s', ':Neoformat<CR>')
