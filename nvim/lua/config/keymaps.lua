@@ -12,6 +12,10 @@ map('n', ',<Space>', ':nohlsearch<CR>', { silent = true })
 -- Git
 map('n', '<C-g>', ':DiffviewOpen<CR>', { silent = true })
 map('n', '<C-k>', ':DiffviewClose<CR>', { silent = true })
+-- File history (MOST IMPORTANT)
+map('n', '<Leader>gh', ':DiffviewFileHistory %<CR>', { silent = true })
+-- Repo history
+map('n', '<Leader>gH', ':DiffviewFileHistory<CR>', { silent = true })
 map('n', '<Leader>g', ':Gitsigns toggle_current_line_blame<CR>', { silent = true })
 map('n', "<C-'>", ':Gitsigns preview_hunk<CR>', { silent = true })
 map('n', "<C-;>", ':Gitsigns reset_hunk<CR>', { silent = true })

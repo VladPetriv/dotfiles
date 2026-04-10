@@ -17,7 +17,7 @@ return {
           end,
         })
         -- You probably also want to set a keymap to toggle aerial
-        vim.keymap.set("n", "gs", "<cmd>AerialToggle!<CR>")
+        vim.keymap.set("n", "gs", "<cmd>AerialNavToggle<CR>")
       end
     }
 }
