@@ -8,6 +8,7 @@ return {
         config = function()
             local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
+
             vim.api.nvim_create_autocmd('LspAttach', {
                 callback = function(args)
                     local opts = { noremap = true, silent = true, buffer = args.buf }
@@ -80,6 +81,9 @@ return {
                 local hl = "DiagnosticSign" .. type
                 vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
             end
+            vim.keymap.set("n", "<leader>wd", function()
+                vim.lsp.buf.workspace_diagnostics()
+            end, { desc = "Workspace diagnostics" })
         end,
     },
 }
