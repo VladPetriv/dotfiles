@@ -34,3 +34,12 @@ map('n', 'wn', '<Cmd>BufferClose<CR>')
 
 -- NodeJS
 map('n', '<Leader>s', ':Neoformat<CR>')
+
+-- Toggle light/dark mode
+map('n', '<Leader>td', function()
+  if vim.o.background == "dark" then
+    vim.o.background = "light"
+  else
+    vim.o.background = "dark"
+  end
+end, { silent = true, desc = "Toggle light/dark mode" })
