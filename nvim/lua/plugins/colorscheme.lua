@@ -7,7 +7,7 @@ return {
         lazy = false,
         priority = 1000,
         config = function()
-            vim.cmd('colorscheme nightfly')
+            vim.cmd('colorscheme modus')
         end,
     },
     { "ellisonleao/gruvbox.nvim", name = 'gruv', lazy = true }
