@@ -5,30 +5,48 @@ return {
         dependencies = {
             'hrsh7th/cmp-nvim-lsp',
         },
+
         config = function()
             local capabilities = require('cmp_nvim_lsp').default_capabilities()
-
 
             vim.api.nvim_create_autocmd('LspAttach', {
                 callback = function(args)
                     local opts = { noremap = true, silent = true, buffer = args.buf }
                     local map = vim.keymap.set
+
+                    map('n', 'gd', vim.lsp.buf.definition, opts)
                     map('n', 'gD', vim.lsp.buf.declaration, opts)
                     map('n', 'gi', vim.lsp.buf.implementation, opts)
-                    map('n', 'gd', vim.lsp.buf.definition, opts)
-                    map('n', '<Leader><Space>', vim.lsp.buf.hover, opts)
                     map('n', 'gr', vim.lsp.buf.references, opts)
+                    map('n', 'K', vim.lsp.buf.hover, opts)
+                    map('n', '<leader>rn', vim.lsp.buf.rename, opts)
+                    map('n', '<leader>ca', vim.lsp.buf.code_action, opts)
+
+                    if vim.lsp.inlay_hint then
+                        vim.lsp.inlay_hint.enable(true, { bufnr = args.buf })
+                    end
                 end,
             })
 
-            vim.diagnostic.config({ signs = true })
-            local gopts = { noremap = true, silent = true }
-            vim.keymap.set('n', 'go', vim.diagnostic.open_float, gopts)
-            vim.keymap.set('n', ']d', vim.diagnostic.goto_next, gopts)
-            vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, gopts)
-            vim.keymap.set('n', '<Leader>q', vim.diagnostic.setloclist, gopts)
 
-            -- protobuf (buf)
+            vim.diagnostic.config({
+                virtual_text = true,
+                signs = true,
+                underline = true,
+                update_in_insert = false,
+                severity_sort = true,
+                float = {
+                    border = 'rounded',
+                    source = true,
+                },
+            })
+
+            vim.keymap.set('n', 'go', vim.diagnostic.open_float, { silent = true })
+            vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { silent = true })
+            vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { silent = true })
+            vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { silent = true })
+
+
             vim.lsp.config.buf_ls = {
                 cmd = { 'buf', 'beta', 'lsp' },
                 filetypes = { 'proto' },
@@ -44,7 +62,6 @@ return {
                 capabilities = capabilities,
                 settings = {
                     gopls = {
-                        semanticTokens = true,
                         analyses = {
                             unusedparams = true,
                             shadow = true,
@@ -54,15 +71,13 @@ return {
                         },
                         staticcheck = true,
                         gofumpt = true,
-                        -- hints = {
-                        --     assignVariableTypes = true,
-                        --     compositeLiteralFields = true,
-                        --     compositeLiteralTypes = true,
-                        --     constantValues = true,
-                        --     functionTypeParameters = true,
-                        --     parameterNames = true,
-                        --     rangeVariableTypes = true,
-                        -- },
+                        hints = {
+                            assignVariableTypes = true,
+                            compositeLiteralFields = true,
+                            constantValues = true,
+                            parameterNames = true,
+                            rangeVariableTypes = true,
+                        },
                     },
                 },
             }
@@ -70,20 +85,16 @@ return {
 
             vim.lsp.config.ts_ls = {
                 cmd = { 'typescript-language-server', '--stdio' },
-                filetypes = { 'typescript', 'typescriptreact', 'javascript', 'javascriptreact' },
+                filetypes = {
+                    'typescript',
+                    'typescriptreact',
+                    'javascript',
+                    'javascriptreact',
+                },
                 root_markers = { 'tsconfig.json', 'package.json', '.git' },
                 capabilities = capabilities,
             }
             vim.lsp.enable('ts_ls')
-
-            local signs = { Error = " ", Warn = " ", Hint = " ", Info = "" }
-            for type, icon in pairs(signs) do
-                local hl = "DiagnosticSign" .. type
-                vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-            end
-            vim.keymap.set("n", "<leader>wd", function()
-                vim.lsp.buf.workspace_diagnostics()
-            end, { desc = "Workspace diagnostics" })
         end,
     },
 }

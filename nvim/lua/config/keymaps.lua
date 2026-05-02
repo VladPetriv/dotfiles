@@ -6,6 +6,15 @@ local function map(mode, lhs, rhs, opts)
     vim.keymap.set(mode, lhs, rhs, options)
 end
 
+local function toggle_inlay_hints()
+    if not vim.lsp.inlay_hint then
+        return
+    end
+
+    local enabled = vim.lsp.inlay_hint.is_enabled and vim.lsp.inlay_hint.is_enabled()
+    vim.lsp.inlay_hint.enable(not enabled)
+end
+
 map('i', 'jj', '<Esc>', { silent = true })
 map('n', ',<Space>', ':nohlsearch<CR>', { silent = true })
 
@@ -26,6 +35,7 @@ map('n', '<Leader>r', ':GoTestFunc<CR>')
 map('n', '<Leader>a', ':GoTest<CR>')
 map('n', '<Leader>p', ':GoTestPkg<CR>')
 map('n', '<Leader>d', ':GoDebug<CR>')
+map('n', '<Leader>fs', ':GoFillStruct<CR>')
 
 -- Tabs
 map('n', 'gT', '<Cmd>BufferPrevious<CR>')
@@ -37,9 +47,14 @@ map('n', '<Leader>s', ':Neoformat<CR>')
 
 -- Toggle light/dark mode
 map('n', '<Leader>td', function()
-  if vim.o.background == "dark" then
-    vim.o.background = "light"
-  else
-    vim.o.background = "dark"
-  end
+    if vim.o.background == "dark" then
+        vim.o.background = "light"
+    else
+        vim.o.background = "dark"
+    end
 end, { silent = true, desc = "Toggle light/dark mode" })
+
+map('n', '<leader>th', toggle_inlay_hints, {
+    silent = true,
+    desc = "Toggle LSP inlay hints"
+})
