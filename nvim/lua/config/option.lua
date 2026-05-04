@@ -27,11 +27,11 @@ o.termguicolors = true
 g.mapleader = ";"
 o.spelllang = 'en_us'
 o.spell = true
+o.colorcolumn = "80"
 
 -- Disable unused providers
 g.loaded_perl_provider = 0
 g.loaded_ruby_provider = 0
 g.loaded_python3_provider = 0
 g.loaded_node_provider = 0
-
 o.guifont = "JetBrainsMono Nerd Font Mono:h10"
