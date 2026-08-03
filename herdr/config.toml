@@ -9,4 +9,4 @@ name = "solarized"
 auto_switch = false
 
 [keys]
-prefix = ";"
+prefix = "ctrl+;"
