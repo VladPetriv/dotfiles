@@ -1,0 +1,12 @@
+[ui.sound]
+enabled = true
+
+[ui.toast]
+delivery = "system"
+
+[theme]
+name = "solarized"
+auto_switch = false
+
+[keys]
+prefix = ";"
