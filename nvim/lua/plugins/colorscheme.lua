@@ -7,7 +7,7 @@ return {
         lazy = false,
         priority = 1000,
         config = function()
-            vim.cmd('colorscheme modus')
+            vim.cmd('colorscheme gruvbox')
         end,
     },
     { "ellisonleao/gruvbox.nvim", name = 'gruv', lazy = true },

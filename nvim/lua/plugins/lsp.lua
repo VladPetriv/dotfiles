@@ -83,6 +83,21 @@ return {
             }
             vim.lsp.enable('gopls')
 
+            vim.lsp.config.yamlls = {
+                cmd = { 'yaml-language-server', '--stdio' },
+                filetypes = { 'yaml', 'yaml.docker-compose', 'yaml.gitlab', 'yaml.helm-values' },
+                root_markers = { '.git' },
+                capabilities = capabilities,
+                settings = {
+                    redhat = { telemetry = { enabled = false } },
+                    yaml = { format = { enable = true } },
+                },
+                on_init = function(client)
+                    client.server_capabilities.documentFormattingProvider = true
+                end,
+            }
+            vim.lsp.enable('yamlls')
+
             vim.lsp.config.ts_ls = {
                 cmd = { 'typescript-language-server', '--stdio' },
                 filetypes = {
