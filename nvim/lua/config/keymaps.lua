@@ -19,15 +19,20 @@ map('i', 'jj', '<Esc>', { silent = true })
 map('n', ',<Space>', ':nohlsearch<CR>', { silent = true })
 
 -- Git
+map('n', "<C-'>", ':Gitsigns preview_hunk<CR>', { silent = true })
+map('n', "<C-;>", ':Gitsigns reset_hunk<CR>', { silent = true })
+
+map('n', '<Leader>g', ':Gitsigns toggle_current_line_blame<CR>', { silent = true })
 map('n', '<C-g>', ':DiffviewOpen<CR>', { silent = true })
 map('n', '<C-k>', ':DiffviewClose<CR>', { silent = true })
--- File history (MOST IMPORTANT)
+
+-- File history 
 map('n', '<Leader>gh', ':DiffviewFileHistory %<CR>', { silent = true })
 -- Repo history
 map('n', '<Leader>gH', ':DiffviewFileHistory<CR>', { silent = true })
-map('n', '<Leader>g', ':Gitsigns toggle_current_line_blame<CR>', { silent = true })
-map('n', "<C-'>", ':Gitsigns preview_hunk<CR>', { silent = true })
-map('n', "<C-;>", ':Gitsigns reset_hunk<CR>', { silent = true })
+
+-- Markdown preview
+map('n', '<Leader>mdp', ':MarkdownPreview<CR>')
 
 -- Golang
 map('n', '<Leader>f', ':GoTestFile<CR>')
@@ -36,6 +41,7 @@ map('n', '<Leader>a', ':GoTest<CR>')
 map('n', '<Leader>p', ':GoTestPkg<CR>')
 map('n', '<Leader>d', ':GoDebug<CR>')
 map('n', '<Leader>fs', ':GoFillStruct<CR>')
+map('n', '<Leader>rm', ':GoRename<CR>')
 
 -- Tabs
 map('n', 'gT', '<Cmd>BufferPrevious<CR>')
@@ -45,7 +51,7 @@ map('n', 'wn', '<Cmd>BufferClose<CR>')
 -- NodeJS
 map('n', '<Leader>s', ':Neoformat<CR>')
 
--- Toggle light/dark mode
+-- Toggle light/dark mode for modus theme
 map('n', '<Leader>td', function()
     if vim.o.background == "dark" then
         vim.o.background = "light"
@@ -58,3 +64,5 @@ map('n', '<leader>th', toggle_inlay_hints, {
     silent = true,
     desc = "Toggle LSP inlay hints"
 })
+
+
