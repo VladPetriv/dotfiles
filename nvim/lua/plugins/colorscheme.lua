@@ -8,7 +8,17 @@ return {
         lazy = false,
         priority = 1000,
         config = function()
-            vim.cmd('colorscheme modus')
+     --       vim.cmd('colorscheme modus')
         end,
+    },
+    {
+       'nickkadutskyi/jb.nvim',
+       lazy = false,
+       priority = 1000,
+       opts = {},
+       config = function()
+        -- require("jb").setup({transparent = true})
+        vim.cmd("colorscheme jb")
+       end,
     },
 }

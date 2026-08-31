@@ -9,6 +9,9 @@ return {
         build = ':lua require("go.install").update_all_sync()',
         opts = {
             run_in_floaterm = true,
+            dap_debug_gui = false,
+            dap_debug_keymap = false,
+            dap_debug_vt = false,
         },
     },
 }

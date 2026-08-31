@@ -39,7 +39,7 @@ map('n', '<Leader>f', ':GoTestFile<CR>')
 map('n', '<Leader>r', ':GoTestFunc<CR>')
 map('n', '<Leader>a', ':GoTest<CR>')
 map('n', '<Leader>p', ':GoTestPkg<CR>')
-map('n', '<Leader>d', ':GoDebug<CR>')
+map('n', '<Leader>dd', ':GoDebugPick<CR>')
 map('n', '<Leader>fs', ':GoFillStruct<CR>')
 map('n', '<Leader>rm', ':GoRename<CR>')
 
